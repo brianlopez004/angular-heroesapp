@@ -1,0 +1,59 @@
+<div class="flex flex-col">
+  <h2 class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+    {{currentHero.id ? 'Editar' : 'Agregar'}} héroe
+  </h2>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="mt-8">
+      <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+          <div class="grid gap-6 mb-6 md:grid-cols-2">
+              <div>
+                  <label for="heroe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Héroe</label>
+                  <input formControlName="superhero" type="text" id="heroe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+              </div>
+              <div>
+                  <label for="alter_ego" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Actor</label>
+                  <input formControlName="alter_ego" type="text" id="alter_ego" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+              </div>
+              <div>
+                  <label for="first_appearance" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primera aparición</label>
+                  <input formControlName="first_appearance" type="text" id="first_appearance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+              </div>
+              <div>
+                  <label for="characters" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Personajes</label>
+                  <input formControlName="characters" type="text" id="characters" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+              </div>
+              <div>
+                <label for="publisher" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Creador</label>
+                  <div class="mt-2">
+                    <select formControlName="publisher" id="publisher" name="publisher" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+                      <option *ngFor="let publisher of publishers" [value]="publisher.id">{{publisher.desc}}</option>
+                    </select>
+                  </div>
+              </div>
+              <div>
+                <label for="alt_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen alternativa</label>
+                <input formControlName="alt_img" type="text" id="alt_img" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-600 dark:focus:border-blue-600" required>
+              </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 pt-10">
+            <button *ngIf="currentHero.id" (click)="onDeleteHero()" class="rounded-md bg-red-600 px-2 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Borrar</button>
+            <button (click)="onSubmit()" class="rounded-md bg-blue-600 px-2 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Guardar</button>
+          </div>
+      </form>
+    </div>
+
+    <div class="flex justify-center items-center mb-10 lg:mb-0">
+      <div class="bg-white shadow-lg">
+        <img [src]="currentHero | heroImage" alt="Imagen del héroe" class="rounded-lg w-72">
+      </div>
+    </div>
+
+    <heroes-button-back></heroes-button-back>
+
+  </div>
+
+
+
+</div>

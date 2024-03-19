@@ -1,0 +1,13 @@
+<div class="bg-white pt-5 pb-24 sm:pb-10">
+  <div class="mx-auto max-w-7xl px-2 lg:px-4">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">Listado</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">Listado de Héroes que se encuantra actualmente.</p>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-5 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <article *ngFor="let hero of heroes" class="flex max-w-xl flex-col items-start justify-between">
+        <heroes-hero-card [hero]="hero"></heroes-hero-card>
+      </article>
+    </div>
+  </div>
+</div>
